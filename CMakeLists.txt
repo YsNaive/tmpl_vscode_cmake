@@ -34,6 +34,9 @@ if(CMAKE_BUILD_TYPE MATCHES "Debug")
         else()
             set(MSVC_OPT "/O2")
         endif()
+        
+        string(REGEX REPLACE "/RTC1" "" CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
+        
         string(REGEX REPLACE "/Od" "${MSVC_OPT}" CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
         string(REGEX REPLACE "/O1" "${MSVC_OPT}" CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
         string(REGEX REPLACE "/O2" "${MSVC_OPT}" CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
