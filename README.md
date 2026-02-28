@@ -31,10 +31,10 @@
 
 1. 按下 `Ctrl + Shift + P` (macOS: `Cmd + Shift + P`) 開啟命令列。
 2. 輸入並選擇 **`CMake: Select Configure Preset`**。
-3. 您將會看到選單中列出了：`Debug(O0)`, `Debug(O1)`, `Debug(O2)`, `Debug(O3)` 以及 `Release`。
+3. 您將會看到選單中列出了：`Debug-O0`, `Debug-O1`, `Debug-O2`, `Debug-O3` 以及 `Release`。
 4. 選擇您想要的優化層級，CMake 會自動為您生成對應的設定。
 
-> 您也可以在 VS Code 下方狀態列點選左下角的 Configure 按鈕進行切換。
+> 您也可以在 VS Code 下方狀態列點選左方的 Configure 按鈕 (可能顯示為 `CMake: [Debug-O0]`) 進行切換。
 
 ### 4. 一鍵編譯與除錯
 **⚠️ 重要：請不要直接按 F5 啟動除錯。** 這可能會觸發 VS Code 預設對單一檔案進行 GCC 編譯的錯誤行為。
@@ -44,14 +44,16 @@
 - （建議）您也可以開啟 VS Code **左側的 CMake 側邊欄**，找到 `MyPackageApp` 後點擊啟動或除錯圖示。
 
 ## 打包成單一檔案 (Amalgamation)
-如果你希望將分散在 `include/` 和 `src/` 中的源碼打包成只要一個 `.h` 和 `.cpp` 就能放入別人專案的格式：
+如果你希望將分散在 `include/` 和 `src/` 中的源碼打包成只要一個 `.h` 和 `.cpp` 就能放入別人專案的格式，我們提供了專屬的 CMake Preset 讓您一鍵打包：
 
-- **透過 VS Code 任務 (推薦)**：按下 `Ctrl + Shift + B` (macOS: `Cmd + Shift + B`)，選擇 `Build Single File Package (Amalgamate)` 即可。
-- **透過 CMake 側邊欄**：在左側的 CMake 面板中，找到 `amalgamate` 這個目標，對它點擊右鍵並選擇 `Build`。
-- **純 CMake 方式**：
+1. 點擊 VS Code **下方狀態列的 Configure 預設檔名稱** (例如 `CMake: [Debug-O0]`)，或按下 `Ctrl+Shift+P` 選擇 `CMake: Select Configure Preset`。
+2. 在選單中選擇 **`Amalgamate`** (Build Single File Package)。
+3. CMake 會自動切換設定。接著點擊狀態列底下的 **`Build`** 按鈕，或是按下 `F7` 即可！
+
+- **純 CMake 方式 (Command Line)**：
   ```bash
-  # 無論您在哪個 build 目錄底下
-  cmake --build <你的 build 資料夾路徑> --target amalgamate
+  cmake --preset Amalgamate
+  cmake --build --preset Amalgamate
   ```
 
 成功後，請查看專案根目錄下的 `dist/` 資料夾，裡面會產生：

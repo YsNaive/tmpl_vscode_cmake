@@ -13,7 +13,7 @@
             "generator": "Ninja"
         },
         {
-            "name": "Debug(O0)",
+            "name": "Debug-O0",
             "inherits": "default-base",
             "displayName": "Debug Mode (O0)",
             "cacheVariables": {
@@ -22,7 +22,7 @@
             }
         },
         {
-            "name": "Debug(O1)",
+            "name": "Debug-O1",
             "inherits": "default-base",
             "displayName": "Debug Mode (O1)",
             "cacheVariables": {
@@ -31,7 +31,7 @@
             }
         },
         {
-            "name": "Debug(O2)",
+            "name": "Debug-O2",
             "inherits": "default-base",
             "displayName": "Debug Mode (O2)",
             "cacheVariables": {
@@ -40,7 +40,7 @@
             }
         },
         {
-            "name": "Debug(O3)",
+            "name": "Debug-O3",
             "inherits": "default-base",
             "displayName": "Debug Mode (O3)",
             "cacheVariables": {
@@ -55,28 +55,41 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
+        },
+        {
+            "name": "Amalgamate",
+            "inherits": "default-base",
+            "displayName": "Build Single File Package",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
         }
     ],
     "buildPresets": [
         {
-            "name": "Debug(O0)",
-            "configurePreset": "Debug(O0)"
+            "name": "Debug-O0",
+            "configurePreset": "Debug-O0"
         },
         {
-            "name": "Debug(O1)",
-            "configurePreset": "Debug(O1)"
+            "name": "Debug-O1",
+            "configurePreset": "Debug-O1"
         },
         {
-            "name": "Debug(O2)",
-            "configurePreset": "Debug(O2)"
+            "name": "Debug-O2",
+            "configurePreset": "Debug-O2"
         },
         {
-            "name": "Debug(O3)",
-            "configurePreset": "Debug(O3)"
+            "name": "Debug-O3",
+            "configurePreset": "Debug-O3"
         },
         {
             "name": "Release",
             "configurePreset": "Release"
+        },
+        {
+            "name": "Amalgamate",
+            "configurePreset": "Amalgamate",
+            "targets": ["amalgamate"]
         }
     ]
 }
