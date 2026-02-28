@@ -1,7 +1,4 @@
 {
-    "cmake.configureArgs": [
-        "-DDEBUG_OPT_LEVEL=O0"
-    ],
     "C_Cpp.default.cppStandard": "c++11",
     "C_Cpp.default.cStandard": "c11"
 }

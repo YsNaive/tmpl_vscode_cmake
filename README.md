@@ -26,22 +26,29 @@
 ### 2. 設定與選擇編譯器
 按下 `Ctrl+Shift+P`（macOS: `Cmd+Shift+P`）輸入 `CMake: Select a Kit`，選擇您電腦上的 GCC/Clang 或 MSVC 編譯器。
 
-### 3. 一鍵編譯與除錯
-- 您可以按下 `F5`，VS Code 將會自動觸發 CMake build 並以 Debug 模式啟動 `main.cpp` 產生出來的執行檔 (`MyPackageApp`)。
-- 或是在 VS Code 下方的狀態列點擊 `Build` 來編譯，點擊 `Run` 來執行，點擊 `Debug` 圖示旁的蟲子按鈕來除錯。
+### 3. 使用 CMake Presets 設定優化層級
+本專案已經內建了 `CMakePresets.json`。
+在 VS Code 中，您可以點擊下方狀態列的 **CMake: [Debug(O0)]** 來切換各種配置：
+- `Debug(O0)`
+- `Debug(O1)`
+- `Debug(O2)`
+- `Debug(O3)`
+- `Release`
 
-## 自訂 Debug 優化層級
-預設情況下，CMake 的 `Debug` 模式編譯為 `-O0`。如果你想要切換成 `-O1` 或 `-O2`：
-1. 打開 `.vscode/settings.json`。
-2. 找到 `cmake.configureArgs` 陣列。
-3. 將 `-DDEBUG_OPT_LEVEL=O0` 修改為 `O1` 或 `O2`。
-4. 儲存後，CMake Tools 會自動重新 Configure，並且在 Debug 模式套用你的設定檔。
+選擇後，CMake 會自動為您生成對應的設定。
+
+### 4. 一鍵編譯與除錯
+**⚠️ 重要：請不要直接按 F5 啟動除錯。** 這可能會觸發 VS Code 預設對單一檔案進行 GCC 編譯的錯誤行為。
+請完全依靠 CMake Tools 擴充套件：
+- 點擊 VS Code **下方狀態列**的 `Build` 來編譯，或是 `Run` 來執行。
+- 點擊狀態列的 `Debug`（蟲子圖示）來啟動除錯。
+- 或是開啟 VS Code **左側的 CMake 側邊欄**，在目標 (Targets) 點擊啟動或除錯圖示。
 
 ## 打包成單一檔案 (Amalgamation)
-如果你希望將分散在 `include/` 和 `src/` 中的源碼變成只要把一個 `.h` 和 `.cpp` 丟進別人專案就能用的格式（例如 SQLite 那樣）：
+如果你希望將分散在 `include/` 和 `src/` 中的源碼打包成只要一個 `.h` 和 `.cpp` 就能放入別人專案的格式：
 
-- **VS Code 任務方式**：按下 `Ctrl+Shift+B`（macOS: `Cmd+Shift+B`），選擇 `package single file`，這會呼叫 CMake 幫你執行 python 打包。
-- **純 CMake 方式**：
+- **透過 CMake Presets (VS Code)**：打開 VS Code 命令面板 (`Ctrl+Shift+P`)，輸入 `CMake: Build`，然後在彈出的清單中選擇 `Build Single File Package (Amalgamate)`。
+- **或純 CMake 方式**：
   ```bash
   mkdir build && cd build
   cmake ..

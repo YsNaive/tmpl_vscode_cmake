@@ -17,10 +17,10 @@ if(CMAKE_BUILD_TYPE MATCHES "Debug")
     # GCC / Clang
     if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
         # Replace the default -O0 with our custom -O*
-        string(REGEX REPLACE "-O[0-9]" "-${DEBUG_OPT_LEVEL}" CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
-
-        # If no -O flag was present (which is rare), append it
-        if(NOT CMAKE_CXX_FLAGS_DEBUG MATCHES "-O[0-9]")
+        # We also need to consider -O3 now.
+        if(CMAKE_CXX_FLAGS_DEBUG MATCHES "-O[0-9]")
+            string(REGEX REPLACE "-O[0-9]" "-${DEBUG_OPT_LEVEL}" CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG}")
+        else()
             set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -${DEBUG_OPT_LEVEL}")
         endif()
     # MSVC
