@@ -1,0 +1,66 @@
+{
+    "C_Cpp.default.cppStandard": "c++11",
+    "C_Cpp.default.cStandard": "c11",    
+    
+    "files.exclude": {
+        "**/.git"   : true,
+        "out"       : true,
+        "**/output" : true,
+        "build"     : true,
+        "scripts"   : true,
+        ".gitignore": true,
+        "dist"      : true,
+        "LICENSE"   : true,
+        "CMake*"    : true,
+        "README.md"   : true,
+    },
+
+    "cmake.options.statusBarVisibility": "hidden",
+    "cmake.options.advanced": {
+        "configurePreset": {
+            "statusBarVisibility": "visible"
+        },
+        "folder": {
+            "statusBarVisibility": "hidden"
+        },
+        "kit": {
+            "statusBarVisibility": "hidden"
+        },
+        "variant": {
+            "statusBarVisibility": "hidden"
+        },
+        "build": {
+            "statusBarVisibility": "hidden"
+        },
+        "buildPreset": {
+            "statusBarVisibility": "hidden"
+        },
+        "buildTarget": {
+            "statusBarVisibility": "hidden"
+        },
+        "ctest": {
+            "statusBarVisibility": "hidden"
+        },
+        "testPreset": {
+            "statusBarVisibility": "hidden"
+        },
+        "launchTarget": {
+            "statusBarVisibility": "hidden"
+        },
+        "debug": {
+            "statusBarVisibility": "hidden"
+        },
+        "launch": {
+            "statusBarVisibility": "visible"
+        },
+        "workflow": {
+            "statusBarVisibility": "hidden"
+        },
+        "workflowPreset": {
+            "statusBarVisibility": "hidden"
+        },
+        "packagePreset": {
+            "statusBarVisibility": "hidden"
+        }
+    },
+}
