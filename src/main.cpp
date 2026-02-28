@@ -1,5 +1,6 @@
 #include <iostream>
 #include "mypackage/mypackage.h"
+#include "mypackage/magic.h"
 
 int main(int argc, char* argv[]) {
     std::string name = "World";
@@ -9,6 +10,8 @@ int main(int argc, char* argv[]) {
 
     mypackage::Greeter greeter(name);
     std::cout << greeter.greet() << std::endl;
+
+    std::cout << "Magic number is: " << mypackage::get_magic_number() << std::endl;
 
 #ifdef NDEBUG
     std::cout << "Release Build" << std::endl;

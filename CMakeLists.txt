@@ -45,11 +45,19 @@ endif()
 
 message(STATUS "CMAKE_CXX_FLAGS_DEBUG: ${CMAKE_CXX_FLAGS_DEBUG}")
 
+# --- Automatic Source File Discovery ---
+# Recursively find all source and header files
+file(GLOB_RECURSE LIB_HDRS "include/*.h")
+file(GLOB_RECURSE LIB_SRCS "src/*.cpp")
+
+# Exclude main.cpp from the library sources, because it's meant for the executable
+list(FILTER LIB_SRCS EXCLUDE REGEX "src/main.cpp$")
+
 # --- Library Target ---
 # We define an object library or static library here.
 # We'll use a static library for simplicity.
 add_library(MyPackageLib STATIC
-    src/mypackage.cpp
+    ${LIB_SRCS}
 )
 
 # Set the include directories for the library.
@@ -76,8 +84,9 @@ set(AMALGAMATED_H "${CMAKE_CURRENT_SOURCE_DIR}/dist/mypackage_single.h")
 set(AMALGAMATED_CPP "${CMAKE_CURRENT_SOURCE_DIR}/dist/mypackage_single.cpp")
 
 # Define input files for the script
-set(H_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/include/mypackage/mypackage.h")
-set(CPP_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/src/mypackage.cpp")
+# We pass the automatically discovered headers and sources.
+set(H_SRCS ${LIB_HDRS})
+set(CPP_SRCS ${LIB_SRCS})
 set(INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 add_custom_target(amalgamate
