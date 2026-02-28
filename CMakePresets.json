@@ -9,8 +9,7 @@
         {
             "name": "default-base",
             "hidden": true,
-            "binaryDir": "${sourceDir}/build/${presetName}",
-            "generator": "Ninja"
+            "binaryDir": "${sourceDir}/build/${presetName}"
         },
         {
             "name": "Debug-O0",
