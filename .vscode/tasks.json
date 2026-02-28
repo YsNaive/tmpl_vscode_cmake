@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Single File Package (Amalgamate)",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${command:cmake.buildDirectory}",
+                "--target",
+                "amalgamate"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Pack the C++ library into single .h and .cpp file"
+        }
+    ]
+}

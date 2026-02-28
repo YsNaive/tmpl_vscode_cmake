@@ -77,12 +77,6 @@
         {
             "name": "Release",
             "configurePreset": "Release"
-        },
-        {
-            "name": "Package(Amalgamate)",
-            "configurePreset": "Release",
-            "displayName": "Build Single File Package (Amalgamate)",
-            "targets": ["amalgamate"]
         }
     ]
 }
